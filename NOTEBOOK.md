@@ -19,3 +19,6 @@ https://github.com/RobotKernel/artstation-scrape-likes/blob/master/script/artsta
 
 - xpaths
 https://www.guru99.com/xpath-selenium.html
+
+- remove duplicte from list
+https://stackoverflow.com/questions/7961363/removing-duplicates-in-the-lists

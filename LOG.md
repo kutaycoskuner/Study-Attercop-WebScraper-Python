@@ -2,9 +2,10 @@
 `Started 05-Dec-2020`
 
 # Todo
-05-Dec-2020 smaller square ifadesi large ile degistirilecek
 
 # Log
+06-Dec-2020 success: basic artstation scraper
+06-Dec-2020 todo: 05-Dec-2020 smaller square ifadesi large ile degistirilecek
 05-Dec-2020 first artstation image scraper success on small images
 05-Dec-2020 todo: 05-Dec-2020 'chromedriver' executable needs to be in PATH.
 05-Dec-2020 install: pip install -U selenium
