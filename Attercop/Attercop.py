@@ -29,7 +29,7 @@ def changeDirectory(folder_name):
     os.chdir(os.path.join(os.getcwd(), folder_name))
 
 # :: Fixes the links
-def adaptorArtstation(driver):   
+def adapterArtstation(driver):   
     items = driver.find_elements_by_class_name('project-image')
     item_links = []
     for item in items:
@@ -39,13 +39,10 @@ def adaptorArtstation(driver):
     item_links = removeDuplicates(item_links)
 
     # :: smallari large ile degistir
-    for item in item_links:
-        item.replace('smallar_square','large')
+    for ii, item in enumerate(item_links):
+        item_links[ii] = item.replace('smaller_square','large')
 
     return item_links
-
-def staticImageSpider(link, folder_name):
-    print('i am static spider')
 
 # :: scrape
 def dynamicImageSpider(item_links):
@@ -77,7 +74,7 @@ def Main():
     # :: differential link process (adapter)
     searchResult = re.search('artstation', link, re.M|re.I)
     if searchResult:
-        item_links = adaptorArtstation(driver)
+        item_links = adapterArtstation(driver)
     else:
         print('given url has no appropriate adapter for scraping')
         return

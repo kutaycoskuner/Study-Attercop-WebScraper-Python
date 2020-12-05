@@ -3,7 +3,13 @@
 
 # Todo
 
+# Problem
+06-Dec-2020 large ile degistirmek her linkte ise yaramiyor
+
 # Log
+[0.21]
+06-Dec-2020 adapterArtstation; link ismindeki replace edilen bolumdeki imla hatasi duzeltildi
+[0.2]
 06-Dec-2020 add: version start 0.2 architecture implemented
 06-Dec-2020 add: folder option, image scraper type selection
 06-Dec-2020 change: code distributed in functions
