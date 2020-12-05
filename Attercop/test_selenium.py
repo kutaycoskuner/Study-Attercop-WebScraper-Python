@@ -1,7 +1,7 @@
 from selenium import webdriver
 
-url = "https://www.artstation.com/kutay_coskuner/albums/all"
+url = "https://www.google.com"
 
-driver = webdriver.Chrome()
+driver = webdriver.Chrome('C:/bin/chromedriver.exe')
 
 driver.get(url)
