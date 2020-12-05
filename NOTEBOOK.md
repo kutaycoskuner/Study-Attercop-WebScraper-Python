@@ -9,6 +9,13 @@
 
 
 
+
 # Sources
-john watson rooney - python web scraping
+- john watson rooney - python web scraping
 https://www.youtube.com/watch?v=pUUhvJvs-R4&list=PLRzwgpycm-FgQ9lP_JTfrCa9O573XiJph
+
+- robotkernel - artstation-scrape-likes
+https://github.com/RobotKernel/artstation-scrape-likes/blob/master/script/artstation_selenium_scrape_manual.py#L58
+
+- xpaths
+https://www.guru99.com/xpath-selenium.html
