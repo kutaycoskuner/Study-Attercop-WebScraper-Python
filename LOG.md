@@ -4,6 +4,9 @@
 # Todo
 
 # Log
+06-Dec-2020 add: version start 0.2 architecture implemented
+06-Dec-2020 add: folder option, image scraper type selection
+06-Dec-2020 change: code distributed in functions
 06-Dec-2020 success: basic artstation scraper
 06-Dec-2020 todo: 05-Dec-2020 smaller square ifadesi large ile degistirilecek
 05-Dec-2020 first artstation image scraper success on small images
