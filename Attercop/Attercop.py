@@ -2,6 +2,9 @@
 # ==== Libraries
 # webdriver
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+# bs4 for static scraping
+# from bs4 import BeautifulStoneSoup
 # Requests allows you to send HTTP/1.1 requests
 import requests
 # [standard] creating folders / change directories
@@ -16,11 +19,11 @@ def endSession(driver):
     quit()
 
 # :: Remove Duplicates
-def removeDuplicates(item_links):
-    unique_links = list(dict.fromkeys(item_links))
+def removeDuplicates(data):
+    unique_links = list(dict.fromkeys(data))
     return unique_links
 
-# :: # :: change folder
+# :: change folder
 def changeDirectory(folder_name):
     try:
         os.mkdir(os.path.join(os.getcwd(), folder_name))
@@ -28,68 +31,96 @@ def changeDirectory(folder_name):
         print('folder already exists')
     os.chdir(os.path.join(os.getcwd(), folder_name))
 
-# :: Fixes the links
+# == Adapters
 def adapterArtstation(driver):   
     items = driver.find_elements_by_class_name('project-image')
-    item_links = []
+    data = []
     for item in items:
         source = item.find_element_by_xpath(".//img[@class='image']")
-        item_links.append(source.get_attribute('src'))
+        data.append(source.get_attribute('src'))
 
-    item_links = removeDuplicates(item_links)
+    data = removeDuplicates(data)
 
     # :: smallari large ile degistir
-    for ii, item in enumerate(item_links):
-        item_links[ii] = item.replace('smaller_square','large')
+    for ii, item in enumerate(data):
+        data[ii] = item.replace('smaller_square','large')
 
-    return item_links
+    return data
 
-# :: scrape
-def dynamicImageSpider(item_links):
-    for num, link in enumerate(item_links, start=1):
+def adapterGitHub(driver):
+    items = driver.find_elements(By.XPATH, '//*[@id="user-repositories-list"]/ul/li')
+    data = []
+    for num, item in enumerate(items, start=1):
+        xpath = './/*[@id="user-repositories-list"]/ul/li[' + str(num) +']/div[1]/div[1]/h3/a'
+        source = driver.find_element(By.XPATH, xpath)
+        data.append(source.text)
+        # print(source.text)
+    return data
+
+# == Scraper
+def dynamicImageSpider(data):
+    for num, link in enumerate(data, start=1):
         with open(str(num) + '.jpg', "wb") as file:
             image = requests.get(link)
             file.write(image.content)
             print(num, link)
-    print('action completed for total', len(item_links), 'items')
+    print('action completed for total', len(data), 'items')
 
-
+def dynamicTextScraper(data, file_name):
+    with open(file_name, "w") as file:
+        for num, item in enumerate(data):
+            file.write(item + "\n")
+            print(num, item)
+    print('action completed for total', len(data), 'items')   
 
 # ==== Main
 def Main():
     # ==== Setup
-    # :: Parameters: edit these
-    link = 'https://www.artstation.com/kutay_coskuner/albums/all'
-    scraper_type = 'image' # image, text
+    # :: testers
+    # https://www.artstation.com/kutay_coskuner/albums/all
+    # == Parameters edit these
+    link = 'https://github.com/kutaycoskuner?tab=repositories'
+    scraper_type = 'text' # :: [disc] image, text
+    scrape_type = 'dynamic' # :: [disc] dynamic, static
     folder_name = 'Downloads'
+    file_name = 'test.txt'
 
-    # :: Selenium
-    driver = webdriver.Chrome('C:\WebDrivers\chromedriver.exe')
-    driver.get(link)
+    if scrape_type == 'dynamic':
+        # == Selenium
+        options = webdriver.ChromeOptions() 
+        options.add_experimental_option("excludeSwitches", ["enable-logging"])
+        driver = webdriver.Chrome(options=options, executable_path='C:\WebDrivers\chromedriver.exe')
+        driver.get(link)
+    # elif scrape_type == 'static':
+    #     # == request + bs4
+    #     pri
+    #     # request = requests.get(link)
+    #     # driver = BeautifulSoup(request.content, 'lxml')
 
     # :: Change folder
     changeDirectory(folder_name)
 
     # ==== Select Scraper
-    # :: differential link process (adapter)
-    searchResult = re.search('artstation', link, re.M|re.I)
-    if searchResult:
-        item_links = adapterArtstation(driver)
+    # == differential link process (adapter)
+    if re.search('artstation', link, re.M|re.I):
+        data = adapterArtstation(driver)
+    elif re.search('github', link, re.M|re.I):
+        data = adapterGitHub(driver)
     else:
         print('given url has no appropriate adapter for scraping')
         return
 
-    # :: if no extraction links stop
-    if item_links == None: 
-        print('no item links are found')
+    # == if no extraction links stop
+    if data == None: 
+        print('no data are found')
         endSession(driver)
-
+        
     # ==== Start Scraping
-    # :: dynamic image scraper
+    # == dynamic image scraper
     if scraper_type == 'image':
-        dynamicImageSpider(item_links)
+        dynamicImageSpider(data)
     elif scraper_type == 'text':
-        print('text scraper is not yet implemented')
+        dynamicTextScraper(data, file_name)
     else:
         print('no spider is scripted for this action')
 

@@ -2,11 +2,18 @@
 `Started 05-Dec-2020`
 
 # Todo
+08-Dec-2020 artstation sayfa, gezerek butun gorselleri indir
+08-Dec-2020 pagination ne ogren
+08-Dec-2020 text bazli indirilenler icin alphabetic sort algoritmasi
+08-Dec-2020 instagram open profile image scraper
 
 # Problem
 06-Dec-2020 large ile degistirmek her linkte ise yaramiyor
 
 # Log
+[0.22]
+08-Dec-2020 todo: 08-Dec-2020 github repositry list extractor
+08-Dec-2020 change: comment color hierarchy change
 [0.21]
 06-Dec-2020 adapterArtstation; link ismindeki replace edilen bolumdeki imla hatasi duzeltildi
 [0.2]
@@ -15,6 +22,7 @@
 06-Dec-2020 change: code distributed in functions
 06-Dec-2020 success: basic artstation scraper
 06-Dec-2020 todo: 05-Dec-2020 smaller square ifadesi large ile degistirilecek
+[0.1]
 05-Dec-2020 first artstation image scraper success on small images
 05-Dec-2020 todo: 05-Dec-2020 'chromedriver' executable needs to be in PATH.
 05-Dec-2020 install: pip install -U selenium
