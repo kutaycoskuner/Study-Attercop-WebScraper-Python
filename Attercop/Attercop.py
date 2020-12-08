@@ -13,6 +13,20 @@ import os
 import re
 
 # ==== Functions
+# == Collect Parameters
+def askParameters():
+    link = input('please insert a link you want to scrape from: ')
+    scraper_type = input('please define scrape type [image | text]: ')
+    file_name = None
+    if scraper_type != 'image' and scraper_type != 'text':
+        print('you have given undefined scrape type')
+        return
+    elif scraper_type == 'text':
+        file_name = input('please insert a file name to save: ')
+    # :: Return
+    param = [link, scraper_type, file_name]
+    return param
+
 # :: End Session
 def endSession(driver):
     driver.quit()
@@ -121,23 +135,22 @@ def Main():
     folder_name = 'Downloads'
     file_name = 'test.txt'
 
+    # == Get parameters from user
+    params = askParameters()
+    if params[0] : link = params[0]
+    if params[1] : scraper_type = params[1]
+    if params[2] : file_name = params[2]
+    # :: Change folder
+    changeDirectory(folder_name)
+
+    # == Selenium
     if scrape_type == 'dynamic':
-        # == Selenium
         options = webdriver.ChromeOptions() 
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
         driver = webdriver.Chrome(options=options, executable_path='C:\WebDrivers\chromedriver.exe')
         driver.get(link)
-    # elif scrape_type == 'static':
-    #     # == request + bs4
-    #     pri
-    #     # request = requests.get(link)
-    #     # driver = BeautifulSoup(request.content, 'lxml')
 
-    # :: Change folder
-    changeDirectory(folder_name)
-
-    # ==== Select Scraper
-    # == differential link process (adapter)
+    # ==== Select Scraper: differential link process (adapter)
     if re.search('artstation', link, re.M|re.I):
         data = adapterArtstation(driver)
     elif re.search('github', link, re.M|re.I):
@@ -146,7 +159,7 @@ def Main():
         print('given url has no appropriate adapter for scraping')
         return
 
-    # == if no extraction links stop
+    # == if no defined adapter or link stop
     if data == None: 
         print('no data are found')
         endSession(driver)

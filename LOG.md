@@ -7,9 +7,11 @@
 08-Dec-2020 instagram open profile image scraper
 
 # Problem
-
+08-Dec-2020 driveri adaptore gore calistirma, eger adaptor yoksa calismamali
 
 # Log
+[0.24]
+08-Dec-2020 add: askParameters; extraction parametrelerini sorma
 [0.23]
 08-Dec-2020 partial: 06-Dec-2020 large ile degistirmek her linkte ise yaramiyor
 08-Dec-2020 fix: cift kayit problemi cozuldu
