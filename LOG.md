@@ -2,14 +2,19 @@
 `Started 05-Dec-2020`
 
 # Todo
-08-Dec-2020 artstation sayfa, gezerek butun gorselleri indir
+08-Dec-2020 ask for parameters
 08-Dec-2020 pagination ne ogren
 08-Dec-2020 instagram open profile image scraper
 
 # Problem
-06-Dec-2020 large ile degistirmek her linkte ise yaramiyor
+
 
 # Log
+[0.23]
+08-Dec-2020 partial: 06-Dec-2020 large ile degistirmek her linkte ise yaramiyor
+08-Dec-2020 fix: cift kayit problemi cozuldu
+08-Dec-2020 fix: 08-Dec-2020 gifleri de jpg olarak kaydediyor
+08-Dec-2020 todo: 08-Dec-2020 artstation sayfa, gezerek butun gorselleri indir
 [0.22]
 08-Dec-2020 todo: 08-Dec-2020 text bazli indirilenler icin alphabetic sort
 08-Dec-2020 todo: 08-Dec-2020 github repositry list extractor
@@ -31,3 +36,4 @@
 05-Dec-2020 install: pip install beautifulsoup4
 
 # Comments
+08-Dec-2020 yeni bir adaptor ekledigimde alttaki ifli ifadeyi de degistirmem gerekiyor bunun onune gecmek icin poly kullanabilir miyim?

@@ -35,17 +35,39 @@ def changeDirectory(folder_name):
 def adapterArtstation(driver):   
     items = driver.find_elements_by_class_name('project-image')
     data = []
-    for item in items:
-        source = item.find_element_by_xpath(".//img[@class='image']")
-        data.append(source.get_attribute('src'))
-
+    # :: projelere ait linleri topla
+    for link in items:
+        data.append(link.get_attribute('href'))
+    # :: duplicate temizle
     data = removeDuplicates(data)
-
-    # :: smallari large ile degistir
-    for ii, item in enumerate(data):
-        data[ii] = item.replace('smaller_square','large')
-
+    individual_links = []
+    # :: sayfalari teker teker gezerek tekil linkleri topla
+    for link in data:
+        driver.get(link)
+        images = driver.find_elements_by_class_name('artwork-image')
+        for image in images:
+            src = image.find_element_by_xpath(".//picture/img")
+            adress = src.get_attribute('src').rstrip("1234567890?")
+            individual_links.append(adress)
+    # :: veriyi esle ve temizle
+    data = individual_links
+    data = removeDuplicates(data)
+    # :: temiz veriyi scrape icin gonder
     return data
+
+# def adapterArtstation_discarded(driver):   
+#     items = driver.find_elements_by_class_name('project-image')
+#     data = []
+#     for item in items:
+#         source = item.find_element_by_xpath(".//img[@class='image']")
+#         data.append(source.get_attribute('src'))
+
+#     data = removeDuplicates(data)
+
+#     # :: smallari large ile degistir
+#     for ii, item in enumerate(data):
+#         data[ii] = item.replace('smaller_square','large')
+#     return data
 
 def adapterGitHub(driver):
     items = driver.find_elements(By.XPATH, '//*[@id="user-repositories-list"]/ul/li')
@@ -59,11 +81,23 @@ def adapterGitHub(driver):
 
 # == Scraper
 def dynamicImageSpider(data):
+    extension_key = None
     for num, link in enumerate(data, start=1):
-        with open(str(num) + '.jpg', "wb") as file:
-            image = requests.get(link)
-            file.write(image.content)
-            print(num, link)
+        if re.search('.jpg', link, re.M|re.I):
+            extension_key = '.jpg'
+        elif re.search('.gif', link, re.M|re.I):
+            extension_key = '.gif'
+        elif re.search('.png', link, re.M|re.I):
+            extension_key = '.png'
+
+        if extension_key:     
+            with open(str(num) + extension_key, "wb") as file:
+                image = requests.get(link)
+                file.write(image.content)
+                print(num, link)
+        else:
+            print(num, link, 'could not find appropriate extension for this asset')
+
     print('action completed for total', len(data), 'items')
 
 def dynamicTextScraper(data, file_name):
@@ -78,9 +112,11 @@ def Main():
     # ==== Setup
     # :: testers
     # https://www.artstation.com/kutay_coskuner/albums/all
+    # https://www.artstation.com/kutay_coskuner/likes
+    # https://github.com/kutaycoskuner?tab=repositories
     # == Parameters edit these
-    link = 'https://github.com/kutaycoskuner?tab=repositories'
-    scraper_type = 'text' # :: [disc] image, text
+    link = 'https://www.artstation.com/kutay_coskuner/likes'
+    scraper_type = 'image' # :: [disc] image, text
     scrape_type = 'dynamic' # :: [disc] dynamic, static
     folder_name = 'Downloads'
     file_name = 'test.txt'
