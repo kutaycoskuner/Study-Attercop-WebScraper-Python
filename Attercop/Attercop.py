@@ -55,7 +55,7 @@ def adapterGitHub(driver):
         source = driver.find_element(By.XPATH, xpath)
         data.append(source.text)
         # print(source.text)
-    return data
+    return sorted(data)
 
 # == Scraper
 def dynamicImageSpider(data):

@@ -4,7 +4,6 @@
 # Todo
 08-Dec-2020 artstation sayfa, gezerek butun gorselleri indir
 08-Dec-2020 pagination ne ogren
-08-Dec-2020 text bazli indirilenler icin alphabetic sort algoritmasi
 08-Dec-2020 instagram open profile image scraper
 
 # Problem
@@ -12,6 +11,7 @@
 
 # Log
 [0.22]
+08-Dec-2020 todo: 08-Dec-2020 text bazli indirilenler icin alphabetic sort
 08-Dec-2020 todo: 08-Dec-2020 github repositry list extractor
 08-Dec-2020 change: comment color hierarchy change
 [0.21]
