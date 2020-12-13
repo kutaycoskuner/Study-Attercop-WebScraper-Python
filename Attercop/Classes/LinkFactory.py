@@ -57,6 +57,29 @@ class Github(LinkFactory):
             data.append(source.text)
         return sorted(data)
 
+class Pinterest(LinkFactory):
+    def __init__(self, driver):
+        super().__init__(driver) # :: you can run super class methods as this
+
+    def elaborateData(self):
+        data = []
+        individual_links = []
+        # :: specified 
+        items = self.driver.find_elements_by_class_name('Collection-Item')
+        # :: sayfalari teker teker gezerek tekil linkleri topla
+        for num, item in enumerate(items, start=1):
+            image = self.driver.find_element_by_xpath('//div['+ str(num) +']/div/div[1]/div[1]/a/img')
+            links = image.get_attribute('srcset').split(', ')
+            for num2, link in enumerate(links): 
+                if num2 == len(links)-1:
+                    individual_links.append(link)
+        # :: veriyi esle ve temizle
+        data = individual_links
+        data = removeDuplicates(data)
+        # :: specified end
+        # :: temiz veriyi scrape icin gonder
+        return sorted(data)
+
 # ==== Discarded
 # def adapterArtstation_discarded(driver):   
 #     items = driver.find_elements_by_class_name('project-image')
@@ -71,3 +94,5 @@ class Github(LinkFactory):
 #     for ii, item in enumerate(data):
 #         data[ii] = item.replace('smaller_square','large')
 #     return data
+
+

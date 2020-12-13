@@ -49,7 +49,7 @@ def Main():
     # https://www.artstation.com/kutay_coskuner/likes
     # https://github.com/kutaycoskuner?tab=repositories
     # == Parameters edit these
-    link = 'https://www.artstation.com/kutay_coskuner/albums/all'
+    link = 'https://tr.pinterest.com/kutay_coskuner/c-asset/'
     scraper_type = 'image' # :: [disc] image, text
     scrape_type = 'dynamic' # :: [disc] dynamic, static
     folder_name = 'Downloads'
@@ -85,6 +85,8 @@ def Main():
         data = website.Artstation(driver)
     elif re.search('github', link, re.M|re.I):
         data = website.Github(driver)
+    elif re.search('pinterest', link, re.M|re.I):
+        data = website.Pinterest(driver)
     else:
         print('given url has no appropriate adapter for scraping')
         return
