@@ -8,6 +8,7 @@
 08-Dec-2020 instagram open profile image scraper
 
 # Problem
+13-Dec-2020 pinterest uzanti problemi
 08-Dec-2020 driveri adaptore gore calistirma, eger adaptor yoksa calismamali
 
 # Log
