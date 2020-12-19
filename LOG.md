@@ -13,6 +13,7 @@
 
 # Log
 [0.24]
+19-Dec-2020 fix: pinterest link isimlerini duzeltme
 13-Dec-2020 add: pinterest board adapter
 08-Dec-2020 arch: software architecture tests, factory
 08-Dec-2020 add: askParameters; extraction parametrelerini sorma | disabled for test

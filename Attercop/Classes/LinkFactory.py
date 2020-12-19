@@ -72,7 +72,8 @@ class Pinterest(LinkFactory):
             links = image.get_attribute('srcset').split(', ')
             for num2, link in enumerate(links): 
                 if num2 == len(links)-1:
-                    individual_links.append(link)
+                    item_link = link.split(' ')
+                    individual_links.append(item_link[0])
         # :: veriyi esle ve temizle
         data = individual_links
         data = removeDuplicates(data)

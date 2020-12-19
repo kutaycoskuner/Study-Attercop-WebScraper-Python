@@ -49,7 +49,7 @@ def Main():
     # https://www.artstation.com/kutay_coskuner/likes
     # https://github.com/kutaycoskuner?tab=repositories
     # == Parameters edit these
-    link = 'https://tr.pinterest.com/kutay_coskuner/c-asset/'
+    link = 'https://tr.pinterest.com/kutay_coskuner/r-presentation/'
     scraper_type = 'image' # :: [disc] image, text
     scrape_type = 'dynamic' # :: [disc] dynamic, static
     folder_name = 'Downloads'
