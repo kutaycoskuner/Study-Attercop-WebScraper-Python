@@ -11,6 +11,13 @@ scraper_type = 'text' # :: [disc] image, text
 scrape_type = 'dynamic' # :: [disc] dynamic, static
 folder_name = 'Downloads'
 file_name = 'test.txt'
+# :: Artstation
+# :: GitHub
+link = 'https://www.artstation.com/kutay_coskuner/albums/all'
+scraper_type = 'image' # :: [disc] image, text
+scrape_type = 'dynamic' # :: [disc] dynamic, static
+folder_name = 'Downloads'
+file_name = 'test.txt'
 
 # :: Links
 # https://www.artstation.com/kutay_coskuner/albums/all

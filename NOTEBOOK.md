@@ -11,6 +11,10 @@
 
 
 # Sources
+- google sheet interactions
+https://developers.google.com/sheets/api/quickstart/python
+https://www.youtube.com/watch?v=4ssigWmExak
+
 - john watson rooney - python web scraping
 https://www.youtube.com/watch?v=pUUhvJvs-R4&list=PLRzwgpycm-FgQ9lP_JTfrCa9O573XiJph
 

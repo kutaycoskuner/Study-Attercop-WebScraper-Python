@@ -2,6 +2,8 @@
 `Started 05-Dec-2020`
 
 # Todo
+17-Mar-2021 write/read googleshet
+17-Mar-2021 write/read json
 17-Mar-2021 virtual env ne ogren
 08-Dec-2020 polymorphic hook
 08-Dec-2020 ask for parameters
@@ -14,6 +16,8 @@
 
 # Log
 [0.24]
+18-Mar-2021 fail: ucak bileti icin table scraper
+17-Mar-2021 test: json crud test
 17-Mar-2021 org: setup proseduru yazildi, test keys eklendi
 19-Dec-2020 fix: pinterest link isimlerini duzeltme
 13-Dec-2020 add: pinterest board adapter
@@ -37,7 +41,7 @@
 06-Dec-2020 success: basic artstation scraper
 06-Dec-2020 todo: 05-Dec-2020 smaller square ifadesi large ile degistirilecek
 [0.1]
-05-Dec-2020 first artstation image scraper success on small images
+05-Dec-2020 success: first artstation image scraper success on small images
 05-Dec-2020 todo: 05-Dec-2020 'chromedriver' executable needs to be in PATH.
 05-Dec-2020 install: pip install -U selenium
 05-Dec-2020 upgrade: py -m pip install --upgrade pip
@@ -45,5 +49,6 @@
 05-Dec-2020 install: pip install beautifulsoup4
 
 # Comments
+17-Mar-2021 google manuel import/export icin json kullanmaya gerek yok tab del .tsv basit ve kullanisli
 08-Dec-2020 architecture is about how do I distribute my code to files in a way to be least affected by change 
 08-Dec-2020 yeni bir adaptor ekledigimde alttaki ifli ifadeyi de degistirmem gerekiyor bunun onune gecmek icin poly kullanabilir miyim?
