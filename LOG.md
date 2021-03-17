@@ -2,6 +2,7 @@
 `Started 05-Dec-2020`
 
 # Todo
+17-Mar-2021 virtual env ne ogren
 08-Dec-2020 polymorphic hook
 08-Dec-2020 ask for parameters
 08-Dec-2020 pagination ne ogren
@@ -13,6 +14,7 @@
 
 # Log
 [0.24]
+17-Mar-2021 org: setup proseduru yazildi, test keys eklendi
 19-Dec-2020 fix: pinterest link isimlerini duzeltme
 13-Dec-2020 add: pinterest board adapter
 08-Dec-2020 arch: software architecture tests, factory
